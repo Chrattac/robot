@@ -2,19 +2,16 @@
 Library           SeleniumLibrary   run_on_failure=Nothing
 
 *** Variables ***
-${SERVER}         https://obstaclecourse.tricentis.com/Obstacles/
+${URL}         https://www.duckduckgo.com
 ${BROWSER}        firefox
-${DRIVER}         /home/chrattac/Documents/Koulu/Ohjelmistotuotannontekniikat/geckodriver/geckodriver
-${DELAY}          0
+${DRIVER}         ../geckodriver/geckodriver
+${DELAY}          0.1
 
 *** Keywords ***
 Prepare Browser
-    Open Browser    ${SERVER}List    ${BROWSER}   executable_path=${DRIVER}
+    Open Browser    ${URL}    ${BROWSER}   executable_path=${DRIVER}
     Maximize Browser Window
     Set Selenium Speed    ${DELAY}
-
-Open Obstacle
-    Go To   ${SERVER}${TEST TAGS}[0]
     
 Verify Solved
-    Wait Until Page Contains    Good job!
+    Wait Until Page Contains    Your Cart
